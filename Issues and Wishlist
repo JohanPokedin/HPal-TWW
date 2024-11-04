@@ -1,10 +1,10 @@
 Known issues:
 - Cleanse function seems to have a problem with Self-dispels so I added a redundant function that triggers Cleanse on self in the Healing Rotation. I think the problem stems from GetMembersAll or AuraIsValid
-- LOD doesn't get used enough in raid encounters
 - Not all new active talents are added. (Added Holy Bulwark, Rite of Sanctification, Avenging Crusader so far)
 
 Resolved issues:
 - LOH icon shows even when on cooldown (resolved thanks to LUC1D DREAM - was a spellID issue)
+- LOD doesn't get used enough in raid encounters (resolved. Removed unitID from IsReady() and it uses it well now)
 
 Wishlist:
 Pre-BOF Frozen Binds
