@@ -629,6 +629,10 @@ A[3] = function(icon, isMulti)
 		if not inCombat and A.RiteOfSanctification:IsTalentLearned() and Unit(player):HasBuffs(A.RiteOfSanctificationBuff.ID) == 0 then
 			return A.RiteOfSanctification:Show(icon)
 		end	
+
+	if inCombat and A.AvengingCrusader:IsReady() and A.AvengingCrusader:IsTalentLearned() and HealingEngine.GetBelowHealthPercentUnits(80, 40) >= 5 and HealingEngine.GetIncomingDMGAVG() > 20 then
+            return A.AvengingCrusader:Show(icon)
+        end
 		
         if inCombat and A.HolyBulwark:IsTalentLearned() and A.HolyBulwark:IsReady(unitID) and Unit(player):HasBuffs(A.HolyBulwarkBuff.ID) == 0 and Unit(unitID):HealthPercent() <= 60 then
 			return A.HolyBulwark:Show(icon)
