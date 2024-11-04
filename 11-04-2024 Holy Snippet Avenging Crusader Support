@@ -644,7 +644,7 @@ A[3] = function(icon, isMulti)
         end
         
         -- Toll + Wrath Amplifier
-        if combatTime > 0 and A.DivineToll:IsReady(unitID) and HealingEngine.GetBelowHealthPercentUnits(70, 40) >= 5 and Unit(player):HasBuffs(A.AvengingWrath.ID) == 0 and A.AvengingWrath:IsReady() and TeamCacheFriendlyType == "raid" then
+        if combatTime > 0 and not A.AvengingCrusader:IsTalentLearned() and A.DivineToll:IsReady(unitID) and HealingEngine.GetBelowHealthPercentUnits(70, 40) >= 5 and Unit(player):HasBuffs(A.AvengingWrath.ID) == 0 and A.AvengingWrath:IsReady() and TeamCacheFriendlyType == "raid" then
             return A.AvengingWrath:Show(icon)
         end
         
