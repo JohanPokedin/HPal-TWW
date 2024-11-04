@@ -648,10 +648,6 @@ A[3] = function(icon, isMulti)
             return A.AvengingWrath:Show(icon)
         end
         
-		if inCombat and A.AvengingCrusader:IsReady() and A.AvengingCrusader:IsTalentLearned() and HealingEngine.GetBelowHealthPercentUnits(80, 40) >= 5 and HealingEngine.GetIncomingDMGAVG() > 30 then
-			return A.AvengingCrusader:Show(icon)
-		end
-		
         -- #17 HPvE DivineToll
         if A.DivineToll:IsReady(unitID) and combatTime > 0 and Unit(unitID):IsPlayer() and Unit(unitID):HasDeBuffs(A.Cyclone.ID, nil, true) == 0 and not Unit(unitID):IsDead() 
         and not IsUnitEnemy(unitID) and Unit(unitID):GetRange() <= 40 and Unit(unitID):HealthPercent() < HolyShockHP and
