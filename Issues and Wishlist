@@ -1,0 +1,10 @@
+Known issues:
+- Cleanse function seems to have a problem with Self-dispels so I added a redundant function that triggers Cleanse on self in the Healing Rotation. I think the problem stems from GetMembersAll or AuraIsValid
+- LOD doesn't get used enough in raid encounters
+
+Resolved issues:
+- LOH icon shows even when on cooldown (resolved thanks to LUC1D DREAM - was a spellID issue)
+
+Wishlist:
+Pre-BOF Frozen Binds
+Automated Defensive use in response to boss events (probably reliant on Nameplate + Spellcast detection)
