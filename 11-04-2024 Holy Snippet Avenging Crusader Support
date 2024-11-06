@@ -463,7 +463,7 @@ A[3] = function(icon, isMulti)
                         HealingEngine.SetTarget(player, 0.5)    -- Add 1sec delay in case of emergency switch     
                         return A.BlessingofWinter                --Keep same icon for all four spells.  
                     elseif A.BlessingofSummer:IsReady(player) and not (A.BlessingofAutumn:IsReady(getmembersAll[i].Unit) or A.BlessingofWinter:IsReady(getmembersAll[i].Unit) or A.BlessingofSpring:IsReady(getmembersAll[i].Unit)) then
-                        if Unit(player):HasBuffs(A.AvengingWrath.ID) >= 10 then --no pet/clone specs 
+                        if (Unit(player):HasBuffs(A.AvengingWrath.ID) >= 10 or Unit(player):HasBuffs(A.AvengingCrusader.ID) >= 10) then --no pet/clone specs 
                             HealingEngine.SetTarget(player, 0.5)    -- Add 0.5 sec delay in case of emergency switch     
                             return A.BlessingofSummer                --Keep same icon for all four spells.       
                         end
