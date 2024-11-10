@@ -1,3 +1,7 @@
+Changes:
+- Increased SOTR usage with 5 Holy Power 
+- Cleanse ignores Tank with Putrid debuff unless party has only 1 debuff and tank has > 18 seconds remaining on debuff
+
 Known issues:
 - Cleanse function seems to have a problem with Self-dispels so I added a redundant function that triggers Cleanse on self in the Healing Rotation. I think the problem stems from GetMembersAll or AuraIsValid
 - Not all new active talents are added. (Added Holy Bulwark, Rite of Sanctification, Avenging Crusader so far)
