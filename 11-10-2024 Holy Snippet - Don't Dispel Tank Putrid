@@ -734,7 +734,7 @@ A[3] = function(icon, isMulti)
             
             -- #1 HPvE Dispel
             if A.Cleanse:IsReady(unitID) and (((A.Zone ~= "arena" or not A.InstanceInfo.isRated)) or ((A.Zone == "arena" or A.InstanceInfo.isRated))) and
-            useDispel and Unit(unitID):HasDeBuffs(342938) == 0 and (Unit(unitID):HasDeBuffs(275014) == 0 or (Unit(unitID):HasDeBuffs(275014) > 2 and not Unit(unitID):Role("TANK")) or (HealingEngine.GetDeBuffsCount(275014, 18) == 1 and Unit(unitID):Role("TANK") and (Unit(unitID):HasDeBuffs(275014) > 18)) and
+            useDispel and Unit(unitID):HasDeBuffs(342938) == 0 and (Unit(unitID):HasDeBuffs(275014) == 0 or (Unit(unitID):HasDeBuffs(275014) > 2 and not Unit(unitID):Role("TANK")) or (HealingEngine.GetDeBuffsCount(275014, 18) == 1 and Unit(unitID):Role("TANK") and (Unit(unitID):HasDeBuffs(275014) > 15))) and
             (
                 -- MouseOver
                 (
