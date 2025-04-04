@@ -1,5 +1,5 @@
 --#############################################
---#####       Holy Paladin by Johan       #####
+--##### Edited Trip Holy Paladin by Johan #####
 --#############################################
 
 
@@ -651,10 +651,10 @@ A[3] = function(icon, isMulti)
         
         -- Beacon of Faith PVE - 2x Tank
         if not A.BeaconofVirtue:IsTalentLearned() and A.BeaconofFaith:IsTalentLearned() and TeamCacheFriendlyType == "raid" then
-            if A.BeaconofLight:IsReady(unitID) and Unit(unitID):Role("TANK") and Unit(unitID):HasBuffs(A.BeaconofLight.ID, true) == 0 and Unit(unitID):HasBuffs(A.BeaconofFaith.ID, true) == 0 then
+            if A.BeaconofLight:IsReady(unitID) and Unit(unitID):Role("TANK") and Unit(unitID):HasBuffs(A.BeaconofLight.ID, true) == 0 and Unit(unitID):HasBuffs(A.BeaconofFaith.ID, true) == 0 and HealingEngine.GetBuffsCount(A.BeaconofLight.ID, 0, true) == 0 then
                 return A.BeaconofLight:Show(icon)
             end
-            if A.BeaconofFaith:IsReady(unitID) and Unit(unitID):Role("TANK") and Unit(unitID):HasBuffs(A.BeaconofLight.ID, true) == 0 and Unit(unitID):HasBuffs(A.BeaconofFaith.ID, true) == 0 then
+            if A.BeaconofFaith:IsReady(unitID) and Unit(unitID):Role("TANK") and Unit(unitID):HasBuffs(A.BeaconofLight.ID, true) == 0 and Unit(unitID):HasBuffs(A.BeaconofFaith.ID, true) == 0 and HealingEngine.GetBuffsCount(A.BeaconofFaith.ID, 0, true) == 0 then
                 return A.BeaconofFaith:Show(icon)
             end
         end
