@@ -1,5 +1,5 @@
 --############################################
---##### Edited TRIP'S PALADINUI by Johan #####
+--#####        PALADINUI by Johan        #####
 --############################################
 
 -- Full credit to Taste
@@ -367,20 +367,7 @@ A.Data.ProfileUI = {
                         ruRU = "Будет использовать Божественный благовест в атаке, когда 5 вражеских юнитов находятся в пределах досягаемости.\nПравая кнопка мышки: Создать макрос.",
                     },
                     M = {},
-                },           
-                {
-                    E = "Checkbox", 
-                    DB = "UseLightofDawn",
-                    DBV = false,
-                    L = { 
-                        ANY = "Use\nLight Of Dawn"
-                    },
-                    TT = {
-                        enUS = "Enables Light of Dawn\nRight click: Create macro",
-                        ruRU = "Активирует Свет зари\nПравая кнопка мышки: Создать макрос.",
-                    },
-                    M = {},
-                },       
+                },               
             },     
             {
                 {
@@ -758,29 +745,7 @@ A.Data.ProfileUI = {
                         ANY = " -- Beacons -- ",
                     },
                 },
-            },    
-            { -- [3]  
-                RowOptions = { margin = { top = 10 } },        
-                {
-                    E = "Dropdown",                                                         
-                    OT = {   
-                        { text = "Tanking Units", value = "Tanking Units" },                    
-                        { text = "Beacon of Faith + Saved By the Light PVP", value = "Beacon of Faith + Saved By the Light" },
-                        { text = "Beacon of Faith PVE (2x Tank)", value = "Beacon of Faith 2" },
-                        { text = "Beacon of Faith PVE (Self and Tank)", value = "Beacon of Faith" },
-                        { text = "Self", value = "Self" },
-                    },
-                    DB = "BeaconWorkMode",
-                    DBV = "Tanking Units",
-                    L = { 
-                        ANY = A.GetSpellInfo(53563) .. "\nMode",
-                    }, 
-                    TT = { 
-                        enUS = "These conditions will be skiped if unit will dying in emergency (critical) situation"
-                    },                    
-                    M = {},
-                },            
-            },            
+            },              
             { -- [7]
                 {
                     E = "Header",
