@@ -448,11 +448,43 @@ A[3] = function(icon, isMulti)
 		
 		local function CheckEnemyCasting()
 			local spellIDsToCheck = {
-				432229, -- Replace with the first spell ID you want to check
-				441171, -- Replace with the second spell ID you want to check
+				258622, -- Resonant Quake
+				260202, -- Drill Smash
+				262347, -- Static Pulse
+				267354, -- Fan of Knives
+				269429, -- Charged Shot
+				297128, -- Short Out
+				323825, -- Grasping Rift
+				324449, -- Manifest Death
+				330716, -- Soulstorm
+				333241, -- Raging Tantrum
+				333827, -- Seismic Stomp
+				339573, -- Echoes of Carnage
+				342135, -- Interrupting Roar
+				423015, -- Castigator's Shield
+				423665, -- Embrace the Light
+				424431, -- Holy Radiance
+				425394, -- Dousing Breath
+				427404, -- Localized Storm
+				427609, -- Disrupting Shout
+				428066, -- Overpowering Roar
+				428169, -- Blinding Light
+				428266, -- Eternal Darkness
+				430171, -- Quenching Blast
+				432229, -- Keg Smash
+				441171, -- Oozing Honey
+				448492, -- Thunderclap
+				448791, -- Sacred Toll
+				465827, -- Warp Blood
+				465463, -- Turbo Charge
+				469721, -- Backwash
+				473070, -- Awaken the Swamp
+				1218117, -- Massive Stomp
+				
+				
 				-- Add more spell IDs as needed
 			}
-
+			
 			-- Iterate through enemy nameplates (you'll need to adapt this part based on your API)
 			for i = 1, 40 do --MAX_VISIBLE_ENEMIES will need to be defined.
 				local unitID = "nameplate" .. i -- Create a unitID associated with the nameplate.
@@ -469,6 +501,28 @@ A[3] = function(icon, isMulti)
 				end
 			end
 			return false; --Return false if none of the spells are being cast.
+		end
+		
+
+		
+		local function CheckAndShowDivineProtection(player, icon)
+			local debuffTable = { 262794, 268233, 294929, 427015, 424739, 426277, 448787, 427609, 427621, 429493, 432182, 439325, 442611, 446403, 448492, 468680 } -- Replace with your debuff IDs
+
+			if A.DivineProtection:IsReady(player) then
+				if CheckEnemyCasting() then -- New condition: Check enemy casting
+					return A.DivineProtection:Show(icon)
+				end
+				for _, debuffID in ipairs(debuffTable) do
+					if Unit(player):HasDeBuffs(debuffID) > 0 then
+						return A.DivineProtection:Show(icon)
+					end
+				end
+			end
+			return false;
+		end
+		
+		if A.AuraMastery:IsReady(player) and (CheckEnemyCasting() or Unit(player):HasDeBuffs(451764) > 0) then
+			return A.AuraMastery:Show(icon)
 		end
 		
         local function BlessingofSeasons(unitID)
@@ -542,22 +596,6 @@ A[3] = function(icon, isMulti)
             end
             
         end
-        
-		local function CheckAndShowDivineProtection(player, icon)
-			local debuffTable = { 432182, 442611, 439325 } -- Replace with your debuff IDs
-
-			if A.DivineProtection:IsReady(player) then
-				if CheckEnemyCasting() then -- New condition: Check enemy casting
-					return A.DivineProtection:Show(icon)
-				end
-				for _, debuffID in ipairs(debuffTable) do
-					if Unit(player):HasDeBuffs(debuffID) > 0 then
-						return A.DivineProtection:Show(icon)
-					end
-				end
-			end
-			return false;
-		end
 		
         --Blessing of Sacrifice
         if A.BlessingofSacrifice:IsReadyByPassCastGCD(unitID) and Unit(unitID):HasDeBuffs(A.Cyclone.ID, nil, true) == 0 and combatTime > 0 and not UnitIsUnit(unitID, player) and not Unit(unitID):IsPet() and not Unit(unitID):IsDead() and Unit(unitID):HealthPercent() <= 40 
@@ -613,10 +651,10 @@ A[3] = function(icon, isMulti)
         
         -- Beacon of Faith PVE - 2x Tank
         if not A.BeaconofVirtue:IsTalentLearned() and A.BeaconofFaith:IsTalentLearned() and TeamCacheFriendlyType == "raid" then
-            if A.BeaconofLight:IsReady(unitID) and Unit(unitID):Role("TANK") and Unit(unitID):HasBuffs(A.BeaconofLight.ID, true) == 0 and Unit(unitID):HasBuffs(A.BeaconofFaith.ID, true) == 0 and HealingEngine.GetBuffsCount(A.BeaconofLight.ID, 0, true) == 0 then
+            if A.BeaconofLight:IsReady(unitID) and Unit(unitID):Role("TANK") and Unit(unitID):HasBuffs(A.BeaconofLight.ID, true) == 0 and Unit(unitID):HasBuffs(A.BeaconofFaith.ID, true) == 0 then
                 return A.BeaconofLight:Show(icon)
             end
-            if A.BeaconofFaith:IsReady(unitID) and Unit(unitID):Role("TANK") and Unit(unitID):HasBuffs(A.BeaconofLight.ID, true) == 0 and Unit(unitID):HasBuffs(A.BeaconofFaith.ID, true) == 0 and HealingEngine.GetBuffsCount(A.BeaconofFaith.ID, 0, true) == 0 then
+            if A.BeaconofFaith:IsReady(unitID) and Unit(unitID):Role("TANK") and Unit(unitID):HasBuffs(A.BeaconofLight.ID, true) == 0 and Unit(unitID):HasBuffs(A.BeaconofFaith.ID, true) == 0 then
                 return A.BeaconofFaith:Show(icon)
             end
         end
@@ -663,7 +701,7 @@ A[3] = function(icon, isMulti)
                 HealingEngine.GetBelowHealthPercentUnits(GetToggle(2, "BoVHPRaid"), 40) >= GetToggle(2, "BoVUnitsRaid")
             ) or
             (
-                CheckEnemyCasting() 
+                CheckEnemyCasting() or Unit(player):HasDeBuffs(451764) > 0
             )
         )
         then
@@ -782,6 +820,15 @@ A[3] = function(icon, isMulti)
                     end                
                 end
             end 
+			
+			if A.BlessingofSacrifice:IsReady() and A.GetToggle(2, "DispelSniper") then
+                for i = 1, #getmembersAll do 
+                    if Unit(getmembersAll[i].Unit):GetRange() <= 40 and not Unit(getmembersAll[i].Unit):IsDead() and Unit(getmembersAll[i].Unit):HasBuffs(A.BlessingofSacrifice.ID) == 0 and Unit(getmembersAll[i].Unit):HasBuffs("TotalImun") == 0
+                    and AuraIsValid(getmembersAll[i].Unit, true, "BlessingofSacrifice") and Unit(getmembersAll[i].Unit):HasDeBuffs(A.Cyclone.ID, nil, true) == 0 then  
+                        HealingEngine.SetTarget(getmembersAll[i].Unit, 0.5)                                      
+                    end                
+                end
+            end 
             
             -- #1 HPvE Dispel
             if A.Cleanse:IsReady(unitID) and (((A.Zone ~= "arena" or not A.InstanceInfo.isRated)) or ((A.Zone == "arena" or A.InstanceInfo.isRated))) and
@@ -857,6 +904,30 @@ A[3] = function(icon, isMulti)
             then
                 return A.BlessingofProtection:Show(icon)
             end     
+			
+			-- #4 HPvE BoS
+            if A.BlessingofSacrifice:IsReady(unitID) and Unit(unitID):HasBuffs(A.BlessingofSacrifice.ID) == 0 and Unit(unitID):HasBuffs("TotalImun") == 0 and not Unit(unitID):IsPet() and not Unit(unitID):IsTank() and not Unit(unitID):IsDead() and
+            (
+                -- MouseOver
+                (
+                    Unit("mouseover"):IsExists() and 
+                    MouseHasFrame() and                      
+                    not IsUnitEnemy("mouseover") and        
+                    AuraIsValid(mouseover, true, "BlessingofSacrifice")
+                ) or 
+                (
+                    (
+                        not A.GetToggle(2, "mouseover") or 
+                        not Unit("mouseover"):IsExists() or 
+                        IsUnitEnemy("mouseover")
+                    ) and        
+                    not IsUnitEnemy(unitID) and A.GetToggle(2, "DispelSniper") and
+                    AuraIsValid(unitID, true, "BlessingofSacrifice")
+                )
+            )
+            then
+                return A.BlessingofSacrifice:Show(icon)
+            end     
             
         end
 		
@@ -889,7 +960,7 @@ A[3] = function(icon, isMulti)
 		end
 		
         --Light of Dawn at 5 HP
-        if Player:HolyPower() == 5 and A.LightofDawn:IsReady() and Unit(player):HasDeBuffs(A.Mindgames.ID) == 0 and not Unit(unitID):IsDead() and UseLightofDawn and HealingEngine.GetBelowHealthPercentUnits(LightofDawnHP, 40) >= LightofDawnUnits and HealingEngine.GetBelowHealthPercentUnits(ForceWoGHP, 40) == 0 then
+        if Player:HolyPower() == 5 and A.LightofDawn:IsReady() and Unit(player):HasDeBuffs(A.Mindgames.ID) == 0 and not Unit(unitID):IsDead() and TeamCacheFriendlyType == "raid" and HealingEngine.GetBelowHealthPercentUnits(LightofDawnHP, 40) >= LightofDawnUnits and HealingEngine.GetBelowHealthPercentUnits(ForceWoGHP, 40) == 0 then
             return A.LightofDawn:Show(icon)
         end
         
@@ -928,7 +999,7 @@ A[3] = function(icon, isMulti)
         end
         
         --Light of Dawn >= 3 HP
-        if A.LightofDawn:IsReady() and Unit(player):HasDeBuffs(A.Mindgames.ID) == 0 and not Unit(unitID):IsDead() and UseLightofDawn and HealingEngine.GetBelowHealthPercentUnits(LightofDawnHP, 40) >= LightofDawnUnits and HealingEngine.GetBelowHealthPercentUnits(ForceWoGHP, 40) == 0 then
+        if A.LightofDawn:IsReady() and Unit(player):HasDeBuffs(A.Mindgames.ID) == 0 and not Unit(unitID):IsDead() and TeamCacheFriendlyType == "raid" and HealingEngine.GetBelowHealthPercentUnits(LightofDawnHP, 40) >= LightofDawnUnits and HealingEngine.GetBelowHealthPercentUnits(ForceWoGHP, 40) == 0 then
             return A.LightofDawn:Show(icon)
         end
         
@@ -1058,6 +1129,34 @@ A[3] = function(icon, isMulti)
             local _,_,_,_,_,NPCID1 = Unit(unitID):InfoGUID()
             local useCC, useKick = Action.InterruptIsValid(unitID)
             
+					
+		local function CheckEnemyCastInterrupt()
+			local spellIDsToCheck = {
+				427342, -- Defend
+				427176, -- Drain Light
+				
+				
+				-- Add more spell IDs as needed
+			}
+			
+			-- Iterate through enemy nameplates (you'll need to adapt this part based on your API)
+			for i = 1, 40 do --MAX_VISIBLE_ENEMIES will need to be defined.
+				local unitID = "nameplate" .. i -- Create a unitID associated with the nameplate.
+				if UnitExists(unitID) and IsUnitEnemy(unitID, "player") then
+					local spell, _, _, _, _, _, _, _, spellID = UnitCastingInfo(unitID)
+
+					if spell then
+					  for _, checkID in ipairs(spellIDsToCheck) do
+						if spellID == checkID then
+						  return true; --Return True if one of the spells is being cast.
+						end
+					  end
+					end
+				end
+			end
+			return false; --Return false if none of the spells are being cast.
+		end
+			
             
             if GetToggle(2, "AutoTarget") and Unit(player):CombatTime() > 0 and MultiUnits:GetByRangeInCombat(15) >= 1 and not Unit(target):IsExplosives() and not Unit(target):IsCondemnedDemon() and (not Unit(target):IsExists() or IsUnitFriendly(target) or Unit(target):IsEnemy()) then 
                 if A.IsExplosivesExists() or A.IsCondemnedDemonsExists() then
@@ -1075,6 +1174,10 @@ A[3] = function(icon, isMulti)
             then 
                 return A.HammerofJustice:Show(icon)       
             end          
+			
+			if useCC and A.BlindingLight:IsReady() and CheckEnemyCastInterrupt() then
+				return A.BlindingLight:Show(icon)
+			end
             
             if A.Rebuke:IsReady("target") and Unit(unitID):CanInterrupt(true, nil, 20, 70) and A.Rebuke:AbsentImun(unitID, Temp.TotalAndPhysKick, true) then
                 return A.Rebuke:Show(icon)
