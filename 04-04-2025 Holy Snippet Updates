@@ -504,20 +504,8 @@ A[3] = function(icon, isMulti)
 		
 
 		
-		local function CheckAndShowDivineProtection(player, icon)
-			local debuffTable = { 262794, 268233, 294929, 333861, 427015, 424739, 426277, 448787, 427609, 427621, 429493, 432182, 439325, 442611, 446403, 448492, 465830, 468680, 473576 } -- Replace with your debuff IDs
-
-			if A.DivineProtection:IsReady() then
-				if CheckEnemyCasting() then -- New condition: Check enemy casting
-					return A.DivineProtection:Show(icon)
-				end
-				for _, debuffID in ipairs(debuffTable) do
-					if Unit(player):HasDeBuffs(debuffID) > 0 then
-						return A.DivineProtection:Show(icon)
-					end
-				end
-			end
-			return false;
+		if A.DivineProtection:IsReady(player) and (CheckEnemyCasting() or (Unit(player):HealthPercent() <= 80 and Unit(player):TimeToDie() <= 8)) then
+			return A.DivineProtection:Show(icon)
 		end
 		
 		if A.AuraMastery:IsReady(player) and (CheckEnemyCasting() or Unit(player):HasDeBuffs(451764) > 0) then
