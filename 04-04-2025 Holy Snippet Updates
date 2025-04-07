@@ -149,8 +149,6 @@ Action[ACTION_CONST_PALADIN_HOLY] = {
     RuleofLaw                        = Action.Create({ Type = "Spell", ID = 214202    }),
     DivinePurpose                    = Action.Create({ Type = "Spell", ID = 223817, Hidden = true    }),    
     DivinePurposeBuff               = Action.Create({ Type = "Spell", ID = 223819, Hidden = true     }),
-    HolyAvenger                        = Action.Create({ Type = "Spell", ID = 105809    }),
-    Seraphim                        = Action.Create({ Type = "Spell", ID = 152262    }),
     SanctifiedWrath                    = Action.Create({ Type = "Spell", ID = 53376    }),    
     AvengingCrusader                = Action.Create({ Type = "Spell", ID = 216331    }),
     Awakening                        = Action.Create({ Type = "Spell", ID = 414195, Hidden = true    }),
@@ -207,7 +205,7 @@ Action[ACTION_CONST_PALADIN_HOLY] = {
     
     
     -- Trinkets
-    MoteSanctification = Create({ Type = "Trinket", ID = 133646}),  
+    SoullettingRuby = Create({ Type = "Trinket", ID = 178809}),  
     Chillglobe = Create({ Type = "Trinket", ID = 194300}),  
     
     
@@ -261,7 +259,6 @@ local function RotationsVariables()
     TrinketMana = GetToggle(2, "TrinketMana")
     LightofDawnHP = GetToggle(2, "LightofDawnHP")
     LightofDawnUnits = GetToggle(2, "LightofDawnUnits")
-    UseLightofDawn = GetToggle(2, "UseLightofDawn")
     ForceWoGHP = GetToggle(2, "ForceWoGHP")
     HolyLightHP = GetToggle(2, "HolyLightHP")
     WordofGloryHP = GetToggle(2, "WordofGloryHP")
@@ -475,11 +472,13 @@ A[3] = function(icon, isMulti)
 				441171, -- Oozing Honey
 				448492, -- Thunderclap
 				448791, -- Sacred Toll
+				460156, -- Jumpstart
 				465827, -- Warp Blood
 				465463, -- Turbo Charge
 				469721, -- Backwash
 				473070, -- Awaken the Swamp
 				1218117, -- Massive Stomp
+				1215741, -- Mighty Smash
 				
 				
 				-- Add more spell IDs as needed
@@ -506,9 +505,9 @@ A[3] = function(icon, isMulti)
 
 		
 		local function CheckAndShowDivineProtection(player, icon)
-			local debuffTable = { 262794, 268233, 294929, 427015, 424739, 426277, 448787, 427609, 427621, 429493, 432182, 439325, 442611, 446403, 448492, 468680 } -- Replace with your debuff IDs
+			local debuffTable = { 262794, 268233, 294929, 333861, 427015, 424739, 426277, 448787, 427609, 427621, 429493, 432182, 439325, 442611, 446403, 448492, 465830, 468680, 473576 } -- Replace with your debuff IDs
 
-			if A.DivineProtection:IsReady(player) then
+			if A.DivineProtection:IsReady() then
 				if CheckEnemyCasting() then -- New condition: Check enemy casting
 					return A.DivineProtection:Show(icon)
 				end
@@ -670,7 +669,7 @@ A[3] = function(icon, isMulti)
         end
         
         -- Beacon of Light - Beacon of Faith + Saved By the Light
-        if A.SavedbytheLight:IsTalentLearned() and A.BeaconofFaith:IsTalentLearned() and BeaconWorkMode == "Beacon of Faith + Saved By the Light" then
+        if A.SavedbytheLight:IsTalentLearned() and A.BeaconofFaith:IsTalentLearned() and (A.Zone == "arena" or A.Zone == "pvp" or A.InstanceInfo.isRated) then
             if UnitIsUnit(unitID, player) and not Unit(unitID):IsDead() and Unit(player):HasBuffs(A.BeaconofLight.ID, true) == 0 and Unit(player):HasDeBuffs(A.RecentlySavedByTheLight.ID, true) == 0 
             or not UnitIsUnit(unitID, player) and HealingEngine.GetBuffsCount(A.BeaconofFaith.ID) > 0 and Unit(unitID):HasDeBuffs(A.Cyclone.ID, nil, true) == 0 and not Unit(unitID):IsDead() and IsUnitFriendly(unitID) and Unit(unitID):IsPlayer() and Unit(player):HasDeBuffs(A.RecentlySavedByTheLight.ID, true) > 0 and Unit(unitID):HasDeBuffs(A.RecentlySavedByTheLight.ID, true) == 0 and Unit(unitID):HasBuffs(A.BeaconofLight.ID, true) == 0 and Unit(unitID):HasBuffs(A.BeaconofFaith.ID, true) == 0 and Unit(unitID):HealthPercent() <= 45 and combatTime > 0 then
                 return A.BeaconofLight:Show(icon)                        
@@ -706,6 +705,11 @@ A[3] = function(icon, isMulti)
         )
         then
             return A.BeaconofVirtue:Show(icon)
+        end
+		
+		--Soulletting Ruby
+        if A.SoullettingRuby:IsReady() and Unit(player):HealthDeficit() >= 520000 and combatTime > 0 then
+            return A.SoullettingRuby:Show(icon)
         end
         
 		if A.TyrDeliverance:IsReady() and Unit(player):GetCurrentSpeed() == 0 and (A.Zone == "pvp" or A.Zone == "arena" or A.InstanceInfo.isRated) and HealingEngine.GetBelowHealthPercentUnits(85, 40) >= 4 then
@@ -1027,7 +1031,7 @@ A[3] = function(icon, isMulti)
                 return A.CrusaderStrike:Show(icon)        
             end
             
-            if A.Judgment:IsReady(target) and not ((IsInGroup() or IsInRaid()) or ((IsInGroup() or IsInRaid()) and Unit(player):HasBuffs(A.AwakeningBuff.ID) == 0 or (Unit(player):HasBuffs(A.AwakeningBuff.ID) <= 5 or Unit(player):HasBuffs(A.AwakeningBuff.ID) > 5 and HealingEngine.GetBelowHealthPercentUnits(80, 40) >= 4)) and (Unit(target):CombatTime() > 0 or A.Zone == "arena" or A.InstanceInfo.isRated or A.Zone == "pvp") and IsUnitEnemy(target) and Unit(target):HasDeBuffs(A.Cyclone.ID, nil, true) == 0 
+            if A.Judgment:IsReady(target) and ((not IsInGroup() or not IsInRaid()) or ((IsInGroup() or IsInRaid()) and (Unit(player):HasBuffs(A.AwakeningBuff.ID) == 0 or (Unit(player):HasBuffs(A.AwakeningBuff.ID) <= 8 or (Unit(player):HasBuffs(A.AwakeningBuff.ID) > 8 and HealingEngine.GetBelowHealthPercentUnits(80, 40) >= 4)))) and (Unit(target):CombatTime() > 0 or A.Zone == "arena" or A.InstanceInfo.isRated or A.Zone == "pvp") and IsUnitEnemy(target) and Unit(target):HasDeBuffs(A.Cyclone.ID, nil, true) == 0 
             and (Unit(player):HasBuffs(A.AvengingCrusader.ID) > 0 or (not A.JudgmentofLight:IsTalentLearned() or (A.JudgmentofLight:IsTalentLearned() and Unit(target):HasDeBuffs(196941, true) == 0))))
             and not Unit(target):IsDead() then
                 return A.Judgment:Show(icon)
@@ -1132,6 +1136,7 @@ A[3] = function(icon, isMulti)
 					
 		local function CheckEnemyCastInterrupt()
 			local spellIDsToCheck = {
+				330586, -- Devour Flesh
 				427342, -- Defend
 				427176, -- Drain Light
 				
