@@ -1,5 +1,5 @@
 --#############################################
---##### Edited Trip Holy Paladin by Johan #####
+--#####       Holy Paladin by Johan       #####
 --#############################################
 
 
@@ -734,10 +734,10 @@ A[3] = function(icon, isMulti)
             return A.Intercession:Show(icon)
         end
         
-		 if A.Judgment:IsReady(target) and Unit(player):HasBuffs(A.AwakeningBuff.ID) <= 5 and combatTime > 0 then
-			return A.Judgment:Show(icon)
-		end
-		
+        if A.Judgment:IsReady(target) and Unit(player):HasBuffs(A.AwakeningBuff.ID) <= 5 and combatTime > 0 then
+            return A.Judgment:Show(icon)
+        end
+        
         -- Toll + Wrath Amplifier
         if combatTime > 0 and not A.AvengingCrusader:IsTalentLearned() and A.DivineToll:IsReady(unitID) and HealingEngine.GetBelowHealthPercentUnits(70, 40) >= 5 and Unit(player):HasBuffs(A.AvengingWrath.ID) == 0 and A.AvengingWrath:IsReady() and TeamCacheFriendlyType == "raid" then
             return A.AvengingWrath:Show(icon)
