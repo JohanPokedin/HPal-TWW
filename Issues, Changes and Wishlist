@@ -1,15 +1,3 @@
-Changes:
-- Increased SOTR usage with 5 Holy Power 
-- Cleanse ignores Tank with Putrid debuff unless party has only 1 debuff and tank has > 18 seconds remaining on debuff
-
 Known issues:
-- Cleanse function seems to have a problem with Self-dispels so I added a redundant function that triggers Cleanse on self in the Healing Rotation. I think the problem stems from GetMembersAll or AuraIsValid
-- Not all new active talents are added. (Added Holy Bulwark, Rite of Sanctification, Avenging Crusader so far)
-
-Resolved issues:
-- LOH icon shows even when on cooldown (resolved thanks to LUC1D DREAM - was a spellID issue)
-- LOD doesn't get used enough in raid encounters (resolved. Removed unitID from IsReady() and it uses it well now)
-
-Wishlist:
-Pre-BOF Frozen Binds
-Automated Defensive use in response to boss events (probably reliant on Nameplate + Spellcast detection)
+- Not all new active talents are added. I use the talent builds from WoWHead for M+/Raid
+- Beacon of Light/Faith application has detection issues at times
