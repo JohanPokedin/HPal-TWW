@@ -172,6 +172,7 @@ Action[ACTION_CONST_PALADIN_HOLY] = {
     SacredWeaponBuff            = Action.Create({ Type = "Spell", ID = 432502, Hidden = true    }),
     BarrierOfFaith                = Action.Create({ Type = "Spell", ID = 148039    }),
     TyrDeliverance                = Action.Create({ Type = "Spell", ID = 200652    }),
+	Veneration					= Action.Create({ Type = "Spell", ID = 392938, Hidden = true    }),
     
     -- PvP
     DivineFavor                               = Action.Create({ Type = "Spell", ID = 210294 }),
@@ -734,7 +735,11 @@ A[3] = function(icon, isMulti)
             return A.Intercession:Show(icon)
         end
         
-        if A.Judgment:IsReady(target) and Unit(player):HasBuffs(A.AwakeningBuff.ID) <= 5 and combatTime > 0 then
+		if A.Veneration:IsTalentLearned() and combatTime > 0 and A.HammerofWrath:IsReady(target) and Unit(player):HasDeBuffs(A.Mindgames.ID) == 0 and IsUnitEnemy(target) and Unit(target):HasDeBuffs(A.Cyclone.ID, nil, true) == 0 and not Unit(target):IsDead() then
+			return A.HammerofWrath:Show(icon)
+		end
+		
+        if A.Judgment:IsReady(target) and combatTime > 0 and Unit(player):HasDeBuffs(A.Mindgames.ID) == 0 and IsUnitEnemy(target) and Unit(target):HasDeBuffs(A.Cyclone.ID, nil, true) == 0 and (Unit(player):HasBuffs(A.AwakeningBuff.ID) <= 5 or (Unit(player):HasBuffs(A.AwakeningBuff.ID) > 5 and HealingEngine.GetBelowHealthPercentUnits(80, 40) >= 4)) then
             return A.Judgment:Show(icon)
         end
         
@@ -1346,4 +1351,3 @@ A[6] = function(icon)
 end 
 A[7] = nil 
 A[8] = nil 
-
