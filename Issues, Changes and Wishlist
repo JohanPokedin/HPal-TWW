@@ -1,3 +1,7 @@
+04-15-2025:
+- Added rotation adjustment for Veneration
+- Modified higher priority Judgment to be used with appropriate Awakening Buff + Party HP conditions
+
 Known issues:
 - Not all new active talents are added. I use the talent builds from WoWHead for M+/Raid
 - Beacon of Light/Faith application has detection issues at times
