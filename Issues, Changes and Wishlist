@@ -15,3 +15,4 @@ Known issues:
 Wishlist:
 - Separate dispel function for Mouseover/MouseHasFrame for Gel cleanse during paired boss in Floodgate
 - Fix BoF/BoL issues with OutOfCombat target + mouseover functionality
+- Improve damage downtime gap of Crusader Strike/Holy Shock when party is at full HP
