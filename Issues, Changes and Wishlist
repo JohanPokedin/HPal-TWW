@@ -1,3 +1,6 @@
+04-17-2025:
+- Fixed Blessing of Sacrifice attempts on self/player
+
 04-15-2025:
 - Added rotation adjustment for Veneration
 - Modified higher priority Judgment to be used with appropriate Awakening Buff + Party HP conditions
@@ -8,3 +11,7 @@ Known issues:
 - Some anticipatory defensive usage is added, not all
 - Only trinket added is Soulletting Ruby
 - I'm having an issue with copying and pasting my snippets into a brand new TMW profile. It simply leaves TMW blank as if nothing was added. I have to import another dev's profile sometimes and past over their snippets with my own to get my profile to load. Hopefully this doesn't affect the Import file.
+
+Wishlist:
+- Separate dispel function for Mouseover/MouseHasFrame for Gel cleanse during paired boss in Floodgate
+- Fix BoF/BoL issues with OutOfCombat target + mouseover functionality
