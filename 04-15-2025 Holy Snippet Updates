@@ -832,7 +832,7 @@ A[3] = function(icon, isMulti)
             if A.BlessingofSacrifice:IsReady() and A.GetToggle(2, "DispelSniper") then
                 for i = 1, #getmembersAll do 
                     if Unit(getmembersAll[i].Unit):GetRange() <= 40 and not Unit(getmembersAll[i].Unit):IsDead() and Unit(getmembersAll[i].Unit):HasBuffs(A.BlessingofSacrifice.ID) == 0 and Unit(getmembersAll[i].Unit):HasBuffs("TotalImun") == 0
-                    and AuraIsValid(getmembersAll[i].Unit, true, "BlessingofSacrifice") and Unit(getmembersAll[i].Unit):HasDeBuffs(A.Cyclone.ID, nil, true) == 0 then  
+                    and AuraIsValid(getmembersAll[i].Unit, true, "BlessingofSacrifice") and not UnitIsUnit(getmembersAll[i].Unit, player) and Unit(getmembersAll[i].Unit):HasDeBuffs(A.Cyclone.ID, nil, true) == 0 then  
                         HealingEngine.SetTarget(getmembersAll[i].Unit, 0.5)                                      
                     end                
                 end
@@ -914,7 +914,7 @@ A[3] = function(icon, isMulti)
             end     
             
             -- #4 HPvE BoS
-            if A.BlessingofSacrifice:IsReady(unitID) and Unit(unitID):HasBuffs(A.BlessingofSacrifice.ID) == 0 and Unit(unitID):HasBuffs("TotalImun") == 0 and not Unit(unitID):IsPet() and not Unit(unitID):IsTank() and not Unit(unitID):IsDead() and
+            if A.BlessingofSacrifice:IsReady(unitID) and Unit(unitID):HasBuffs(A.BlessingofSacrifice.ID) == 0 and not UnitIsUnit(unitID, player) and Unit(unitID):HasBuffs("TotalImun") == 0 and not Unit(unitID):IsPet() and not Unit(unitID):IsTank() and not Unit(unitID):IsDead() and
             (
                 -- MouseOver
                 (
