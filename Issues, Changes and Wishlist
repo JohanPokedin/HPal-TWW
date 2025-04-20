@@ -3,6 +3,10 @@
   The macros for BoF/BoL will need to be changed to: 
   /cast [@target,help][@mouseover,help][@focus,help]Beacon of Light 
   /cast [@target,help][@mouseover,help][@focus,help]Beacon of Faith /cast [@focus,help]Beacon of Virtue
+- Added Mouseover Dispel function that specifically cleanses Kinetic Explosive Gel in Floodgate Dungeon when you mouseover an ally Party Frame
+      "if A.Cleanse:IsReady(mouseover) and MouseHasFrame() and Unit(mouseover):HasDeBuffs(473713) > 0 and combatTime > 0 then
+		     	return A.Cleanse:Show(icon)
+			 end"
 
 04-17-2025:
 - Fixed Blessing of Sacrifice attempts on self/player
