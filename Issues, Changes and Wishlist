@@ -1,3 +1,9 @@
+04-20-2025:
+- Changed Beacon of Faith and Beacon of Light function in Raid to utilize Target and Mouseover instead of Focus and Mouseover. This should reduce/near eliminate mid-fight BoF/BoL spam attempts due to tank detection issues when the raid is split. Why? Because Target is typically/always on Enemy and unless you mouseover a tank during a fight and your group is split, it is unlikely to trigger the function.
+  The macros for BoF/BoL will need to be changed to: 
+  /cast [@target,help][@mouseover,help][@focus,help]Beacon of Light 
+  /cast [@target,help][@mouseover,help][@focus,help]Beacon of Faith /cast [@focus,help]Beacon of Virtue
+
 04-17-2025:
 - Fixed Blessing of Sacrifice attempts on self/player
 
