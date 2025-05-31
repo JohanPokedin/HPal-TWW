@@ -1,3 +1,7 @@
+05-31-2025:
+- Loosened up DivineToll healing condition to 2 or less Holy Power instead of 1 or less.
+- Allowed Holy Shock Damage to be used down to 30% mana instead of 80%
+
 04-20-2025:
 - Changed Beacon of Faith and Beacon of Light function in Raid to utilize Target and Mouseover instead of Focus and Mouseover. This should reduce/near eliminate mid-fight BoF/BoL spam attempts due to tank detection issues when the raid is split. Why? Because Target is typically/always on Enemy and unless you mouseover a tank during a fight and your group is split, it is unlikely to trigger the function.
   The macros for BoF/BoL will need to be changed to: 
