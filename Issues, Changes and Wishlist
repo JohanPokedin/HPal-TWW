@@ -1,3 +1,7 @@
+FYI:
+This profile is not fully WASD and not fully optimized. It is very capable of healing Mythic raid or high level keys in the hands of an experienced user but there are things that are not done well for you like using of HoJ/Blinding Light because I am not that good at coding functions for those things. It also still has a BoF/BoL bug. Since I have a lot of experience
+with my own rotation, I understand how to work around these things using Toggles and AntiFake functions. If you're relatively new to GGL, you will probably have many questions or think that this rotation could use a lot more improvement (yes it could) but I am always available to try to help you as best as I can. The Setup Guide isn't perfect but will give you a headstart.
+
 05-31-2025:
 - Loosened up DivineToll healing condition to 2 or less Holy Power instead of 1 or less.
 - Allowed Holy Shock Damage to be used down to 30% mana instead of 80%
