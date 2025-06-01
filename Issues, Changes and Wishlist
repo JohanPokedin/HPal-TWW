@@ -30,6 +30,4 @@ Known issues:
 - I'm having an issue with copying and pasting my snippets into a brand new TMW profile. It simply leaves TMW blank as if nothing was added. I have to import another dev's profile sometimes and past over their snippets with my own to get my profile to load. Hopefully this doesn't affect the Import file.
 
 Wishlist:
-- Separate dispel function for Mouseover/MouseHasFrame for Gel cleanse during paired boss in Floodgate
 - Fix BoF/BoL issues with OutOfCombat target + mouseover functionality
-- Improve damage downtime gap of Crusader Strike/Holy Shock when party is at full HP
