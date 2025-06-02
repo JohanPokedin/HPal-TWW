@@ -4,6 +4,10 @@ with my own rotation, I understand how to work around these things using Toggles
 
 I recommend using Ellesmere's WA for BoF/BoL application detection.
 
+06-02-2025:
+- Added Spouting Stout and Fluttering Wing to Defensives
+- Removed Happy Hour from Defensives
+
 05-31-2025:
 - Loosened up DivineToll healing condition to 2 or less Holy Power instead of 1 or less.
 - Allowed Holy Shock Damage to be used down to 30% mana instead of 80%
