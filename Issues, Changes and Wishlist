@@ -4,6 +4,12 @@ with my own rotation, I understand how to work around these things using Toggles
 
 I recommend using Ellesmere's WA for BoF/BoL application detection.
 
+08-24-2025:
+- Added some defensives for Halls of Atonement and Dawnbreaker
+- Removed anticipatory cast check for Blessing of Virtue
+- Edited ProfileUI settings for Blessing of Virtue use and loosened up the Units/HP Percentages
+- Added high priority usage of FoL when Infusion of Light is available/Beacon of Virtue is available
+
 06-02-2025:
 - Added Spouting Stout and Fluttering Wing to Defensives
 - Removed Happy Hour from Defensives
