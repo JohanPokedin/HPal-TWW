@@ -14,6 +14,7 @@ I recommend using Ellesmere's WA for BoF/BoL application detection.
 - Added minimum elapsed time conditions for Time Bomb, Cultivated Poison, Explosive Kinetic Gel (if you have Dispel Sniper and Cleanse active, it will dispel Kinetic Gel when it is at 6 or less seconds, Time Bomb at 20 or less, Cultivated Poison at 7 or less)
 	This gives you 2 methods of dispelling these time-sensitive debuffs. Leave Dispel Sniper on and hope that the timing is fine or manually mouseover allies during these fights and don't add the spellID to your Dispel Auras (or toggle Cleanse + Dispel Sniper off during the fight)
 - Cleaned up a few old functions
+- Cleaned up ProfileUI
 
 08-24-2025:
 - Added some defensives for Halls of Atonement and Dawnbreaker
