@@ -4,6 +4,18 @@ with my own rotation, I understand how to work around these things using Toggles
 
 I recommend using Ellesmere's WA for BoF/BoL application detection.
 
+08-30-2025:
+- Removed Putrid Water conditions
+- Removed Money Order from Defensives and added Fan Mail
+- Added function to hold Freedom if target/nameplate is casting Cosmic Singularity (I haven't tested this yet)
+- Edited HoJ condition to check CantTouchThis
+- Edited AntiFakeStun to check CantTouchThis
+- Added Blinding Light function to be used if 2 or more blindable enemies are casting and added CantTouchThis condition
+- Added Mouseover dispels for Time Bomb, Cultivated Poison, Explosive Kinetic Gel (if you mouseover an ally with this debuff, it will cleanse them)
+- Added minimum elapsed time conditions for Time Bomb, Cultivated Poison, Explosive Kinetic Gel (if you have Dispel Sniper and Cleanse active, it will dispel Kinetic Gel when it is at 6 or less seconds, Time Bomb at 20 or less, Cultivated Poison at 7 or less)
+	This gives you 2 methods of dispelling these time-sensitive debuffs. Leave Dispel Sniper on and hope that the timing is fine or manually mouseover allies during these fights and don't add the spellID to your Dispel Auras (or toggle Cleanse + Dispel Sniper off during the fight)
+- Cleaned up a few old functions
+
 08-24-2025:
 - Added some defensives for Halls of Atonement and Dawnbreaker
 - Removed anticipatory cast check for Blessing of Virtue
