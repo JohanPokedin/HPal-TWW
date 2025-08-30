@@ -9,7 +9,6 @@ I recommend using Ellesmere's WA for BoF/BoL application detection.
 - Removed Money Order from Defensives and added Fan Mail
 - Added function to hold Freedom if target/nameplate is casting Cosmic Singularity (I haven't tested this yet)
 - Edited HoJ condition to check CantTouchThis
-- Edited AntiFakeStun to check CantTouchThis
 - Added Blinding Light function to be used if 2 or more blindable enemies are casting and added CantTouchThis condition
 - Added Mouseover dispels for Time Bomb, Cultivated Poison, Explosive Kinetic Gel (if you mouseover an ally with this debuff, it will cleanse them)
 - Added minimum elapsed time conditions for Time Bomb, Cultivated Poison, Explosive Kinetic Gel (if you have Dispel Sniper and Cleanse active, it will dispel Kinetic Gel when it is at 6 or less seconds, Time Bomb at 20 or less, Cultivated Poison at 7 or less)
