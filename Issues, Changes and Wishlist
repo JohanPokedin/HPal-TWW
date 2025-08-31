@@ -16,6 +16,8 @@ I recommend using Ellesmere's WA for BoF/BoL application detection.
 - Cleaned up a few old functions
 - Cleaned up ProfileUI
 - Added condition similar to Freedom's to prevent Blinding Light/HoJ from going off on Grasping Blood when last boss Arak is casting Cosmic Singularity
+- Added redundant mouseover functions for Rebuke/HoJ/Blinding Light on Grasping Blood cast for last boss Arak fight
+- Attempted to fix AntiFakeKick issues with channeled spells (also attempting to fix issue with last boss Arak fight, but due to redundant mouseover functions, will not be able to test this on that specific spell)
 
 08-24-2025:
 - Added some defensives for Halls of Atonement and Dawnbreaker
