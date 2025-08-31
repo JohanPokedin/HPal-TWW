@@ -15,6 +15,7 @@ I recommend using Ellesmere's WA for BoF/BoL application detection.
 	This gives you 2 methods of dispelling these time-sensitive debuffs. Leave Dispel Sniper on and hope that the timing is fine or manually mouseover allies during these fights and don't add the spellID to your Dispel Auras (or toggle Cleanse + Dispel Sniper off during the fight)
 - Cleaned up a few old functions
 - Cleaned up ProfileUI
+- Added condition similar to Freedom's to prevent Blinding Light/HoJ from going off on Grasping Blood when last boss Arak is casting Cosmic Singularity
 
 08-24-2025:
 - Added some defensives for Halls of Atonement and Dawnbreaker
