@@ -4,6 +4,14 @@ with my own rotation, I understand how to work around these things using Toggles
 
 I recommend using Ellesmere's WA for BoF/BoL application detection.
 
+09-05-2025:
+- Many improvements with ChatGPT
+- ProfileUI now supports RU tooltips due to ChatGPT, ProfileUI cleaned up
+- BoF can be added to Dispels for Ara'Kara fight, it will only be dispelling Grasping Blood within 5 seconds after last Cosmic cast so it will avoid premature/start of fight BoFs
+- Rebuke/HoJ/Blinding Light mouseover for Grasping Blood will be held during Cosmic cast then sent after cast is over
+- Logic cleaned up significantly so FPS is much better during heavy fights
+- Beacon of Faith/Light logic redone with ChatGPT (untested)
+
 08-30-2025:
 - Removed Putrid Water conditions
 - Removed Money Order from Defensives and added Fan Mail
